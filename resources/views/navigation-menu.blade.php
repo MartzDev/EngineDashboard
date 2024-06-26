@@ -12,7 +12,7 @@
     <aside id="logo-sidebar"
         class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar">
-        <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+        <div class="h-full px-3 py-4 overflow-y-auto bg-white dark:bg-gray-800">
             <div class="flex items-center space-x-4 mb-5">
                 <img class="w-20 h-20 rounded-full transition duration-200 ease-in-out transform hover:scale-95"
                     src="{{ asset('assets/images/perfil.jpg') }}" alt="foto" aria-placeholder="foto de perfil">
@@ -149,7 +149,7 @@
         </div>
     </aside>
 
-    <div class="p-4 sm:ml-64">
+    {{-- <div class="p-4 sm:ml-64">
         <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
             <div class="grid grid-cols-3 gap-4 mb-4">
                 <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
@@ -275,7 +275,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </nav>
 {{-- <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
