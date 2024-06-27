@@ -15,7 +15,8 @@
         <div class="h-full px-3 py-4 overflow-y-auto bg-white dark:bg-gray-800">
             <div class="flex items-center space-x-4 mb-5">
                 <img class="w-20 h-20 rounded-full transition duration-200 ease-in-out transform hover:scale-95"
-                    src="{{ asset('assets/images/perfil.jpg') }}" alt="foto" aria-placeholder="foto de perfil">
+                    src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}"
+                    aria-placeholder="foto de perfil">
 
                 <div class="font-medium dark:text-white">
                     <div>{{ Auth::user()->name }}</div>

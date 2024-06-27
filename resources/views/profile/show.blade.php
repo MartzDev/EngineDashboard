@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <!-- Breadcrumb -->
-        <nav class="flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
+        <nav class="flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg shadow-2xl bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
             aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-3">
 
