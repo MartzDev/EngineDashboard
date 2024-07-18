@@ -21,9 +21,9 @@
     </x-slot>
 
 
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg  bg-gray-50">
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-gray-50">
         <div
-            class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 bg-white dark:bg-gray-900">
+            class="bg-white dark:bg-gray-900">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
@@ -31,7 +31,7 @@
                             id
                         </th>
                         <th scope="col" class="px-6 py-3 text-center uppercase">
-                            {{ __('Name') }}
+                            usuario
                         </th>
                         <th scope="col" class="px-6 py-3 text-center uppercase">
                             cargo
