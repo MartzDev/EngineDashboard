@@ -56,7 +56,7 @@
                             </td>
 
                             <td scope="row"
-                                class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                class="flex items-center justify-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                                 <img class="w-10 h-10 rounded-full" src="{{ Auth::user()->profile_photo_url }}"
                                     alt="Jese image">
                                 <div class="ps-3">
