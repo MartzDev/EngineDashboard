@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -12,6 +13,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        $users = DB::table('users')->paginate(5,['id', 'name', 'email'], 'pageUsers');
+        return view('dashboard', compact('users'));
     })->name('dashboard');
 });

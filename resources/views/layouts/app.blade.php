@@ -29,8 +29,8 @@
 
         <!-- Page Heading -->
         @if (isset($header))
-            <div class="p-4 sm:ml-64">
-                <header class="p-4 mb-5 rounded-lg dark:border-gray-700">
+            <div class="pt-20 sm:ml-64">
+                <header class="mb-5 rounded-lg dark:border-gray-700">
                     <div class="flex items-center justify-between h-10 ml-5 mr-5 rounded">
                         {{ $header }}
                     </div>
