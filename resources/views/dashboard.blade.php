@@ -119,7 +119,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="m-5">
+        <div class="p-5 bg-gray-50">
             {{ $users->links() }}
         </div>
     </div>
