@@ -1,13 +1,16 @@
 <x-app-layout>
     <x-slot name="header">
+
+        {{-- <p class="text-4xl font-medium text-gray-900 dark:text-white">{{ Str::title(__('Dashboard')) }}</p> --}}
+
         <!-- Breadcrumb -->
-        <nav class="flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg shadow-2xl bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
+        <nav class="flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg shadow bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
             aria-label="Breadcrumb">
-            <ol class="inline-flex items-center space-x-1 md:space-x-3">
+            <ol class="inline-flex items-center">
                 <li class="inline-flex items-center">
                     <a href="{{ route('dashboard') }}"
                         class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="lucide lucide-house">
                             <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
@@ -19,11 +22,9 @@
                 </li>
             </ol>
         </nav>
-        {{-- <p class="text-4xl font-medium text-gray-900 dark:text-white">{{ Str::title(__('Dashboard')) }}</p> --}}
     </x-slot>
 
-
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-gray-50">
+    <div class="relative overflow-x-auto shadow sm:rounded-lg bg-gray-50">
         <div class="bg-white dark:bg-gray-900">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -68,7 +69,15 @@
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center justify-center">
-                                    <div class="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div> Online
+                                    <div class="relative flex">
+                                        <span
+                                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                        <span class="relative inline-flex rounded-full h-3 w-3 bg-green-400"></span>
+                                    </div>
+
+                                    <p class="ml-2">
+                                        En linea
+                                    </p>
                                 </div>
                             </td>
                             <td class="px-6 py-4">
@@ -97,7 +106,7 @@
                                         </svg>
                                     </a>
                                     <a href="#"
-                                    class="font-bold text-yellow-300 dark:text-yellow-300 hover:underline">
+                                        class="font-bold text-yellow-300 dark:text-yellow-300 hover:underline">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                             stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye">

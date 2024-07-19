@@ -1,7 +1,7 @@
-{{-- personalizacion por defecto de jetstream y flowbite --}}
+{{-- personalizacion por defecto de jetstream, flowbite y windstatic --}}
 <div>
-    <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-        <div class="px-3 py-3 lg:px-5 lg:pl-3">
+    <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700">
+        <div class="px-1 py-3 lg:px-5 lg:pl-1">
             <div class="flex items-center justify-between">
                 <div class="flex items-center justify-start rtl:justify-end">
                     <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar"
@@ -18,7 +18,7 @@
                     <a href="https://flowbite.com" class="flex ms-2 md:me-24">
                         <img src="{{ asset('assets/svgs/laravel.svg') }}" class="h-8 me-3" alt="Laravel Logo" />
                         <span
-                            class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">EngineDashboard</span>
+                            class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">{{ env('APP_NAME') }}</span>
                     </a>
                 </div>
                 <div class="flex items-center">
@@ -82,7 +82,7 @@
     </nav>
 
     <aside id="logo-sidebar"
-        class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+        class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 shadow sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
         aria-label="Sidebar">
 
         <div class="h-full px-3 overflow-y-auto bg-white dark:bg-gray-800">
@@ -112,7 +112,7 @@
                                 d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
                         </svg>
 
-                        <span class="ml-3">{{ Str::title(__('Dashboard')) }}</span>
+                        <span class="flex-1 ml-3">{{ Str::title(__('Dashboard')) }}</span>
                     </x-nav-link>
                 </li>
             </ul>
@@ -120,51 +120,94 @@
             <p class="px-2 pt-4 pb-1 text-xs font-medium text-gray-400 uppercase">
                 {{ Str::title('contenido') }}
             </p>
+
             <ul class="space-y-2 font-medium">
-                <button type="button"
-                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                    aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="lucide lucide-shopping-cart">
-                        <circle cx="8" cy="21" r="1" />
-                        <circle cx="19" cy="21" r="1" />
-                        <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
-                    </svg>
-
-                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">E-commerce</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
-                </button>
-                <ul id="dropdown-example" class="hidden py-2 space-y-2">
-                    <li>
-                        <a href="#"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Products</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Billing</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Invoice</a>
-                    </li>
-                </ul>
-
-                <li>
-                    <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <li x-data="{ open: false }">
+                    <button type="button"
+                        class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                        @click="open = ! open">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="lucide lucide-shopping-bag">
-                            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
-                            <path d="M3 6h18" />
-                            <path d="M16 10a4 4 0 0 1-8 0" />
+                            stroke-linejoin="round" class="lucide lucide-shopping-cart">
+                            <circle cx="8" cy="21" r="1" />
+                            <circle cx="19" cy="21" r="1" />
+                            <path
+                                d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
                         </svg>
 
-                        <span class="flex-1 ms-3 whitespace-nowrap">Products</span>
-                    </a>
+                        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">E-commerce</span>
+                        <svg :class="{ 'rotate-180': open, 'rotate-0': !open }" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-chevron-down transition-transform duration-200 transform group-hover:text-accent rotate-0">
+                            <path d="m6 9 6 6 6-6" />
+                        </svg>
+                    </button>
+
+                    <ul class="py-2 space-y-2 p-2 pl-6 -px-px" x-show="open" @click.outside="open = false">
+                        <li
+                            class="flex items-center w-full p-2 pl-3 text-gray-900 rounded-lg transition duration-75 group hover:text-blue-500 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-headphones">
+                                <path
+                                    d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3" />
+                            </svg>
+                            <a href="#" class="flex-1 ml-3">Invoice</a>
+                            <span class="rounded-full bg-blue-500 px-2.5 py-0.5 text-xs font-medium text-white">
+                                25
+                            </span>
+                        </li>
+                    </ul>
                 </li>
-                {{-- <ul class="pt-4 mt-4 space-y-2 font-medium border-t border-black-200 dark:border-gray-700"></ul> --}}
+            </ul>
+
+            <p class="mt-4 space-y-2 font-medium border-t border-black-200 dark:border-gray-700"></p>
+
+            <p class="px-2 pt-4 pb-1 text-xs font-medium text-gray-400 uppercase">
+                {{ Str::title('personalización') }}
+            </p>
+
+            <ul class="space-y-2 font-medium">
+                <li x-data="{ open: false }">
+                    <button type="button"
+                        class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                        @click="open = ! open">
+                        <svg :class="{ 'rotate-180': open, 'rotate-0': !open }" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-settings transition-transform duration-200 transform group-hover:text-accent rotate-0">
+                            <path
+                                d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>
+
+                        <span
+                            class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">configuraci&oacute;n</span>
+                        <svg :class="{ 'rotate-180': open, 'rotate-0': !open }" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-chevron-down transition-transform duration-50 transform group-hover:text-accent rotate-0">
+                            <path d="m6 9 6 6 6-6" />
+                        </svg>
+                    </button>
+
+                    <ul class="py-2 space-y-2 p-2 pl-6 -px-px" x-show="open" @click.outside="open = false">
+                        <li
+                            class="flex items-center w-full p-2 pl-3 text-gray-900 rounded-lg transition duration-75 group hover:text-blue-500 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-headphones">
+                                <path
+                                    d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3" />
+                            </svg>
+                            <a href="#" class="flex-1 ml-3">Invoice</a>
+                            <span class="rounded-full bg-blue-500 px-2.5 py-0.5 text-xs font-medium text-white">
+                                25
+                            </span>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </aside>
