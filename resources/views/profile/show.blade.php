@@ -2,7 +2,7 @@
     <x-slot name="header">
         {{-- <p class="text-4xl font-medium text-gray-900 dark:text-white">{{ Str::title(__('Profile')) }}</p> --}}
         <!-- Breadcrumb -->
-        <nav class="flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg shadow bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
+        <nav class="flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg shadow-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
             aria-label="Breadcrumb">
             <ol class="inline-flex items-center">
 
