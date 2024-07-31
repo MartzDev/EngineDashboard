@@ -118,6 +118,111 @@
             </ul>
 
             <p class="px-2 pt-4 pb-1 text-xs font-medium text-gray-400 uppercase">
+                cruds
+            </p>
+
+            <ul class="space-y-2 font-medium">
+                <li @php $open = (request()->routeIs('chirp.*')) ? '{ open: true }' : '{ open: false }' ; @endphp
+                    x-data="{{ $open }}">
+                    <x-button-link type="button" class="flex items-center w-full p-2" :active="request()->routeIs('chirp.*')"
+                        @click="open = ! open">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M19.775 22.6L1.4 4.225L2.8 2.8l18.4 18.4zM12 21q-3.775 0-6.387-1.162T3 17V7q0-.65.438-1.237t1.237-1.088l6.3 6.3q-1.8-.075-3.325-.45t-2.65-1v3q1.275.725 3.075 1.1T12 14q.5 0 .975-.012t.95-.063l1.75 1.75q-.85.175-1.775.25T12 16q-2.125 0-3.925-.375T5 14.525V17q.225.725 2.437 1.363T12 19q1.6 0 3.213-.325t2.662-.8l1.45 1.45q-1.225.775-3.137 1.225T12 21m8.75-3.075L19 16.175v-1.65q-.275.15-.55.275t-.575.25l-1.525-1.525q.75-.2 1.413-.437T19 12.525v-3q-1.025.575-2.35.925t-2.9.475l-1.9-1.9q1.1 0 2.3-.175t2.237-.462t1.75-.65t.863-.713q-.275-.725-2.512-1.375T12 5q-.925 0-1.888.125t-1.837.325L6.625 3.8q1.125-.375 2.5-.587T12 3q3.725 0 6.363 1.175T21 7v10q0 .25-.062.475t-.188.45" />
+                        </svg>
+
+                        <span
+                            class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap first-letter:uppercase">cruds
+                            sin livewire</span>
+                        <svg :class="{ 'rotate-180': open, 'rotate-0': !open }" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-chevron-down transition-transform duration-200 transform group-hover:text-accent rotate-0">
+                            <path d="m6 9 6 6 6-6" />
+                        </svg>
+                    </x-button-link>
+
+                    <ul class="py-2 space-y-2 p-2 pl-6 -px-px" x-show="open" @click.outside="open = false">
+                        <li>
+                            <x-nav-link :href="route('chirp.index')" :active="request()->routeIs('chirp.*')">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                        d="M2 20V4h20v16zm10-7L4 8v10h16V8zm0-2l8-5H4zM4 8V6v12z" />
+                                </svg>
+
+                                <span class="flex-1 ml-3 first-letter:uppercase">chirps</span>
+                            </x-nav-link>
+                        </li>
+
+                        <li>
+                            <x-nav-link>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                        d="M4 23v-2h16v2zM4 3V1h16v2zm8 10q1.25 0 2.125-.875T15 10t-.875-2.125T12 7t-2.125.875T9 10t.875 2.125T12 13m-8 7q-.825 0-1.412-.587T2 18V6q0-.825.588-1.412T4 4h16q.825 0 1.413.588T22 6v12q0 .825-.587 1.413T20 20zm1.75-2q1.125-1.4 2.725-2.2T12 15t3.525.8T18.25 18H20V6H4v12zm2.95 0h6.6q-.725-.5-1.562-.75T12 17t-1.737.25T8.7 18m3.3-7q-.425 0-.712-.288T11 10t.288-.712T12 9t.713.288T13 10t-.288.713T12 11m0 1" />
+                                </svg>
+
+                                <span class="flex-1 ml-3 first-letter:uppercase">contactos</span>
+                            </x-nav-link>
+                        </li>
+
+                        <li>
+                            <x-nav-link>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                        d="M5.85 17.1q1.275-.975 2.85-1.537T12 15t3.3.563t2.85 1.537q.875-1.025 1.363-2.325T20 12q0-3.325-2.337-5.663T12 4T6.337 6.338T4 12q0 1.475.488 2.775T5.85 17.1M12 13q-1.475 0-2.488-1.012T8.5 9.5t1.013-2.488T12 6t2.488 1.013T15.5 9.5t-1.012 2.488T12 13m0 9q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22m0-2q1.325 0 2.5-.387t2.15-1.113q-.975-.725-2.15-1.112T12 17t-2.5.388T7.35 18.5q.975.725 2.15 1.113T12 20m0-9q.65 0 1.075-.425T13.5 9.5t-.425-1.075T12 8t-1.075.425T10.5 9.5t.425 1.075T12 11m0 7.5" />
+                                </svg>
+
+                                <span class="flex-1 ml-3 first-letter:uppercase">usuarios</span>
+                            </x-nav-link>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="space-y-2 font-medium">
+                <li x-data="{ open: false }">
+                    <x-button-link type="button"
+                        class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                        @click="open = ! open">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M12 21q-3.775 0-6.387-1.162T3 17V7q0-1.65 2.638-2.825T12 3t6.363 1.175T21 7v10q0 1.675-2.613 2.838T12 21m0-11.975q2.225 0 4.475-.638T19 7.025q-.275-.725-2.512-1.375T12 5q-2.275 0-4.462.638T5 7.025q.35.75 2.538 1.375T12 9.025M12 14q1.05 0 2.025-.1t1.863-.288t1.675-.462T19 12.525v-3q-.65.35-1.437.625t-1.675.463t-1.863.287T12 11t-2.05-.1t-1.888-.288T6.4 10.15T5 9.525v3q.625.35 1.4.625t1.663.463t1.887.287T12 14m0 5q1.15 0 2.338-.175t2.187-.462t1.675-.65t.8-.738v-2.45q-.65.35-1.437.625t-1.675.463t-1.863.287T12 16t-2.05-.1t-1.888-.288T6.4 15.15T5 14.525V17q.125.375.788.725t1.662.638t2.2.462T12 19" />
+                        </svg>
+
+                        <span
+                            class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap first-letter:uppercase">cruds
+                            con livewire</span>
+                        <svg :class="{ 'rotate-180': open, 'rotate-0': !open }" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-chevron-down transition-transform duration-200 transform group-hover:text-accent rotate-0">
+                            <path d="m6 9 6 6 6-6" />
+                        </svg>
+                    </x-button-link>
+
+                    <ul class="py-2 space-y-2 p-2 pl-6 -px-px" x-show="open" @click.outside="open = false">
+                        <li
+                            class="flex items-center w-full p-2 pl-3 text-gray-900 rounded-lg transition duration-75 group hover:text-blue-500 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-headphones">
+                                <path
+                                    d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3" />
+                            </svg>
+                            <a href="#" class="flex-1 ml-3">Invoice</a>
+                            <span class="rounded-full bg-blue-500 px-2.5 py-0.5 text-xs font-medium text-white">
+                                25
+                            </span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p class="px-2 pt-4 pb-1 text-xs font-medium text-gray-400 uppercase">
                 {{ Str::title('contenido') }}
             </p>
 
@@ -183,7 +288,7 @@
                         </svg>
 
                         <span
-                            class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">configuraci&oacute;n</span>
+                            class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap first-letter:uppercase">configuraci&oacute;n</span>
                         <svg :class="{ 'rotate-180': open, 'rotate-0': !open }" xmlns="http://www.w3.org/2000/svg"
                             width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
