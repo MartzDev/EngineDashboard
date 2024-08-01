@@ -15,7 +15,7 @@
                             </path>
                         </svg>
                     </button>
-                    <a href="https://flowbite.com" class="flex ms-2 md:me-24">
+                    <a href="{{ route('dashboard') }}" class="flex ms-2 md:me-24">
                         <img src="{{ asset('assets/svgs/laravel.svg') }}" class="h-8 me-3" alt="Laravel Logo" />
                         <span
                             class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">{{ env('APP_NAME') }}</span>
