@@ -122,9 +122,9 @@
             </p>
 
             <ul class="space-y-2 font-medium">
-                <li @php $open = (request()->routeIs('chirp.*')) ? '{ open: true }' : '{ open: false }' ; @endphp
+                <li {{ $open = request()->routeIs('chirp.*') ? '{ open: true }' : '{ open: false }' }}
                     x-data="{{ $open }}">
-                    <x-button-link type="button" class="flex items-center w-full p-2" :active="request()->routeIs('chirp.*')"
+                    <x-button-nav-link type="button" class="flex items-center w-full p-2" :active="request()->routeIs('chirp.*')"
                         @click="open = ! open">
 
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -141,9 +141,10 @@
                             class="lucide lucide-chevron-down transition-transform duration-200 transform group-hover:text-accent rotate-0">
                             <path d="m6 9 6 6 6-6" />
                         </svg>
-                    </x-button-link>
+                    </x-button-nav-link>
 
-                    <ul class="py-2 space-y-2 p-2 pl-6 -px-px" x-show="open" @click.outside="open = false">
+                    <ul class="py-2 space-y-2 p-2 pl-6 -px-px" x-show="open"
+                        @click.outside="open={{ request()->routeIs('chirp.*') ? 'true' : 'false' }}">
                         <li>
                             <x-nav-link :href="route('chirp.index')" :active="request()->routeIs('chirp.*')">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -185,7 +186,7 @@
 
             <ul class="space-y-2 font-medium">
                 <li x-data="{ open: false }">
-                    <x-button-link type="button"
+                    <x-button-nav-link type="button"
                         class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                         @click="open = ! open">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -202,7 +203,7 @@
                             class="lucide lucide-chevron-down transition-transform duration-200 transform group-hover:text-accent rotate-0">
                             <path d="m6 9 6 6 6-6" />
                         </svg>
-                    </x-button-link>
+                    </x-button-nav-link>
 
                     <ul class="py-2 space-y-2 p-2 pl-6 -px-px" x-show="open" @click.outside="open = false">
                         <li
