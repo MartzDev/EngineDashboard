@@ -11,7 +11,7 @@ class StoreChirpRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,23 @@ class StoreChirpRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'slug' => 'required|string|unique:chirps,slug',
+            'message' => 'required|string|max:255'
+        ];
+    }
+
+    public function attributes(): array
+    {
+        return [
+            'slug' => 'identificador',
+            'message' => 'mensaje'
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'required' => 'el campo :attribute es requerido',
         ];
     }
 }

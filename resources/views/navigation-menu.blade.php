@@ -1,7 +1,7 @@
 {{-- personalizacion por defecto de jetstream, flowbite y windstatic --}}
 <div>
     <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700">
-        <div class="px-1 py-3 lg:px-5 lg:pl-1">
+        <div class="px-1 py-2 lg:px-5 lg:pl-1">
             <div class="flex items-center justify-between">
                 <div class="flex items-center justify-start rtl:justify-end">
                     <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar"
@@ -25,20 +25,20 @@
                     <div class="flex items-center ms-3">
 
                         <!-- Settings Dropdown -->
-                        <div class="ms-3 relative">
+                        <div class="relative ms-3">
                             <x-dropdown align="right" width="48">
                                 <x-slot name="trigger">
                                     @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                                         <button
-                                            class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                                            <img class="h-8 w-8 rounded-full object-cover"
+                                            class="flex text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
+                                            <img class="object-cover w-8 h-8 rounded-full"
                                                 src="{{ Auth::user()->profile_photo_url }}"
                                                 alt="{{ Auth::user()->name }}" />
                                         </button>
                                     @else
                                         <span class="inline-flex rounded-md">
                                             <button type="button"
-                                                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
+                                                class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50">
                                                 {{ Auth::user()->name }}
 
                                                 <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
@@ -82,19 +82,19 @@
     </nav>
 
     <aside id="logo-sidebar"
-        class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 shadow sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+        class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full bg-white border-r border-gray-200 shadow pt-14 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
         aria-label="Sidebar">
 
-        <div class="h-full px-3 overflow-y-auto bg-white dark:bg-gray-800">
+        <div class="h-full px-3 pt-2 overflow-y-auto bg-white dark:bg-gray-800">
             <div class="flex flex-col items-center">
                 <a href="{{ route('profile.show') }}">
-                    <img class="w-20 h-20 rounded-full transition duration-200 ease-in-out transform hover:scale-95"
+                    <img class="w-20 h-20 transition duration-200 ease-in-out transform rounded-full hover:scale-95"
                         src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}"
                         aria-placeholder="foto de perfil">
                 </a>
             </div>
 
-            <div class="flex flex-col items-center text-center space-x-4 mb-5">
+            <div class="flex flex-col items-center mb-5 space-x-4 text-center">
                 <div class="font-medium dark:text-white">
                     <p>{{ Auth::user()->name }}</p>
                     <p class="text-sm text-gray-500 dark:text-gray-400">{{ Auth::user()->email }}</p>
@@ -133,17 +133,17 @@
                         </svg>
 
                         <span
-                            class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap first-letter:uppercase">cruds
+                            class="flex-1 text-left ms-3 rtl:text-right whitespace-nowrap first-letter:uppercase">cruds
                             sin livewire</span>
                         <svg :class="{ 'rotate-180': open, 'rotate-0': !open }" xmlns="http://www.w3.org/2000/svg"
                             width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="lucide lucide-chevron-down transition-transform duration-200 transform group-hover:text-accent rotate-0">
+                            class="transition-transform duration-200 transform rotate-0 lucide lucide-chevron-down group-hover:text-accent">
                             <path d="m6 9 6 6 6-6" />
                         </svg>
                     </x-button-nav-link>
 
-                    <ul class="py-2 space-y-2 p-2 pl-6 -px-px" x-show="open"
+                    <ul class="p-2 py-2 pl-6 space-y-2 -px-px" x-show="open"
                         @click.outside="open={{ request()->routeIs('chirp.*') ? 'true' : 'false' }}">
                         <li>
                             <x-nav-link :href="route('chirp.index')" :active="request()->routeIs('chirp.*')">
@@ -195,19 +195,19 @@
                         </svg>
 
                         <span
-                            class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap first-letter:uppercase">cruds
+                            class="flex-1 text-left ms-3 rtl:text-right whitespace-nowrap first-letter:uppercase">cruds
                             con livewire</span>
                         <svg :class="{ 'rotate-180': open, 'rotate-0': !open }" xmlns="http://www.w3.org/2000/svg"
                             width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="lucide lucide-chevron-down transition-transform duration-200 transform group-hover:text-accent rotate-0">
+                            class="transition-transform duration-200 transform rotate-0 lucide lucide-chevron-down group-hover:text-accent">
                             <path d="m6 9 6 6 6-6" />
                         </svg>
                     </x-button-nav-link>
 
-                    <ul class="py-2 space-y-2 p-2 pl-6 -px-px" x-show="open" @click.outside="open = false">
+                    <ul class="p-2 py-2 pl-6 space-y-2 -px-px" x-show="open" @click.outside="open = false">
                         <li
-                            class="flex items-center w-full p-2 pl-3 text-gray-900 rounded-lg transition duration-75 group hover:text-blue-500 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                            class="flex items-center w-full p-2 pl-3 text-gray-900 transition duration-75 rounded-lg group hover:text-blue-500 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                 stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-headphones">
@@ -241,18 +241,18 @@
                                 d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
                         </svg>
 
-                        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">E-commerce</span>
+                        <span class="flex-1 text-left ms-3 rtl:text-right whitespace-nowrap">E-commerce</span>
                         <svg :class="{ 'rotate-180': open, 'rotate-0': !open }" xmlns="http://www.w3.org/2000/svg"
                             width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="lucide lucide-chevron-down transition-transform duration-200 transform group-hover:text-accent rotate-0">
+                            class="transition-transform duration-200 transform rotate-0 lucide lucide-chevron-down group-hover:text-accent">
                             <path d="m6 9 6 6 6-6" />
                         </svg>
                     </button>
 
-                    <ul class="py-2 space-y-2 p-2 pl-6 -px-px" x-show="open" @click.outside="open = false">
+                    <ul class="p-2 py-2 pl-6 space-y-2 -px-px" x-show="open" @click.outside="open = false">
                         <li
-                            class="flex items-center w-full p-2 pl-3 text-gray-900 rounded-lg transition duration-75 group hover:text-blue-500 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                            class="flex items-center w-full p-2 pl-3 text-gray-900 transition duration-75 rounded-lg group hover:text-blue-500 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                 stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-headphones">
@@ -282,25 +282,25 @@
                         <svg :class="{ 'rotate-180': open, 'rotate-0': !open }" xmlns="http://www.w3.org/2000/svg"
                             width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="lucide lucide-settings transition-transform duration-200 transform group-hover:text-accent rotate-0">
+                            class="transition-transform duration-200 transform rotate-0 lucide lucide-settings group-hover:text-accent">
                             <path
                                 d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
                             <circle cx="12" cy="12" r="3" />
                         </svg>
 
                         <span
-                            class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap first-letter:uppercase">configuraci&oacute;n</span>
+                            class="flex-1 text-left ms-3 rtl:text-right whitespace-nowrap first-letter:uppercase">configuraci&oacute;n</span>
                         <svg :class="{ 'rotate-180': open, 'rotate-0': !open }" xmlns="http://www.w3.org/2000/svg"
                             width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="lucide lucide-chevron-down transition-transform duration-50 transform group-hover:text-accent rotate-0">
+                            class="transition-transform transform rotate-0 lucide lucide-chevron-down duration-50 group-hover:text-accent">
                             <path d="m6 9 6 6 6-6" />
                         </svg>
                     </button>
 
-                    <ul class="py-2 space-y-2 p-2 pl-6 -px-px" x-show="open" @click.outside="open = false">
+                    <ul class="p-2 py-2 pl-6 space-y-2 -px-px" x-show="open" @click.outside="open = false">
                         <li
-                            class="flex items-center w-full p-2 pl-3 text-gray-900 rounded-lg transition duration-75 group hover:text-blue-500 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                            class="flex items-center w-full p-2 pl-3 text-gray-900 transition duration-75 rounded-lg group hover:text-blue-500 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                 stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-headphones">
@@ -322,7 +322,7 @@
 {{-- personalizacion flowbite --}}
 {{-- <nav>
     <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button"
-        class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+        class="inline-flex items-center p-2 mt-2 text-sm text-gray-500 rounded-lg ms-3 sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
         <span class="sr-only">Open sidebar</span>
         <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
             <path clip-rule="evenodd" fill-rule="evenodd"
@@ -335,8 +335,8 @@
         class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar">
         <div class="h-full px-3 py-4 overflow-y-auto bg-white dark:bg-gray-800">
-            <div class="flex items-center space-x-4 mb-5">
-                <img class="w-20 h-20 rounded-full transition duration-200 ease-in-out transform hover:scale-95"
+            <div class="flex items-center mb-5 space-x-4">
+                <img class="w-20 h-20 transition duration-200 ease-in-out transform rounded-full hover:scale-95"
                     src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}"
                     aria-placeholder="foto de perfil">
 
@@ -408,7 +408,7 @@
                         <path
                             d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
                     </svg>
-                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">E-commerce</span>
+                    <span class="flex-1 text-left ms-3 rtl:text-right whitespace-nowrap">E-commerce</span>
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -440,7 +440,7 @@
                         </svg>
                         <span class="flex-1 ms-3 whitespace-nowrap">Inbox</span>
                         <span
-                            class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
+                            class="inline-flex items-center justify-center w-3 h-3 p-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full ms-3 dark:bg-blue-900 dark:text-blue-300">3</span>
                     </a>
                 </li>
                 <li>
@@ -622,13 +622,13 @@
 </nav> --}}
 {{-- <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center">
+                <div class="flex items-center shrink-0">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-mark class="block h-9 w-auto" />
+                        <x-application-mark class="block w-auto h-9" />
                     </a>
                 </div>
 
@@ -643,11 +643,11 @@
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
-                    <div class="ms-3 relative">
+                    <div class="relative ms-3">
                         <x-dropdown align="right" width="60">
                             <x-slot name="trigger">
                                 <span class="inline-flex rounded-md">
-                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
+                                    <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50">
                                         {{ Auth::user()->currentTeam->name }}
 
                                         <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -694,16 +694,16 @@
                 @endif
 
                 <!-- Settings Dropdown -->
-                <div class="ms-3 relative">
+                <div class="relative ms-3">
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                                <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                                    <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                                <button class="flex text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
+                                    <img class="object-cover w-8 h-8 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                                 </button>
                             @else
                                 <span class="inline-flex rounded-md">
-                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
+                                    <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50">
                                         {{ Auth::user()->name }}
 
                                         <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -747,9 +747,9 @@
             </div>
 
             <!-- Hamburger -->
-            <div class="-me-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
-                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+            <div class="flex items-center -me-2 sm:hidden">
+                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500">
+                    <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -771,13 +771,13 @@
             <div class="flex items-center px-4">
                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                     <div class="shrink-0 me-3">
-                        <img class="h-10 w-10 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                        <img class="object-cover w-10 h-10 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                     </div>
                 @endif
 
                 <div>
-                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                    <div class="text-base font-medium text-gray-800">{{ Auth::user()->name }}</div>
+                    <div class="text-sm font-medium text-gray-500">{{ Auth::user()->email }}</div>
                 </div>
             </div>
 

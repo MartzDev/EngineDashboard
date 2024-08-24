@@ -1,5 +1,5 @@
 <x-app-layout>
-    <p class="text-4xl font-medium text-gray-900 dark:text-white first-letter:uppercase">crear chirp</p>
+    {{-- <p class="text-4xl font-medium text-gray-900 dark:text-white first-letter:uppercase">crear chirp</p> --}}
     <x-slot name="header">
         <!-- Breadcrumb -->
         <nav class="flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg shadow-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
@@ -46,4 +46,22 @@
             </ul>
         </nav>
     </x-slot>
+
+    <div class="max-w-2xl p-4 mx-auto sm:p-6 lg:p-8">
+        <form method="post" action="{{ route('chirp.store') }}">
+            @csrf
+            @method('post')
+
+            <x-label for="slug" value="slug" class="mb-2" />
+            <x-input id="slug" name="slug" type="text" class="w-full mb-2" required :value="old('slug')" />
+            <x-input-error for="slug" class="mb-2" />
+
+            <x-label for="message" value="message" class="mb-2" />
+            <textarea id="message" name="message" required placeholder="{{ __('What\'s on your mind?') }}"
+                class="block w-full mb-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">{{ old('message') }}</textarea>
+            <x-input-error for="message" class="mb-2" />
+
+            <x-button class="mt-4">{{ __('crear') }}</x-button>
+        </form>
+    </div>
 </x-app-layout>

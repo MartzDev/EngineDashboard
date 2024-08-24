@@ -7,6 +7,6 @@
             : 'flex items-center p-2 text-gray-900 transition duration-200 ease-in-out transform rounded-lg hover:text-blue-500 hover:bg-gray-100 hover:text-dark-900 hover:scale-95 dark:text-white dark:hover:bg-gray-700 group';
 @endphp
 
-<a {{ $attributes->merge(['class' => $classes]) }}>
+<button type="button" {{ $attributes->merge(['class' => $classes]) }}>
     {{ $slot }}
-</a>
+</button>
