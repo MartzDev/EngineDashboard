@@ -16,7 +16,7 @@ class ChirpController extends Controller
      */
     public function index(): View
     {
-        $chirps = Chirp::withoutTrashed('user')->paginate(15, ['*'], 'pageChirps');
+        $chirps = Chirp::withoutTrashed('user')->orderBy('id')->paginate(15, ['*'], 'pageChirps');
         return view('chirp.index', compact('chirps'));
     }
 
@@ -71,6 +71,16 @@ class ChirpController extends Controller
     public function destroy(Chirp $chirp): RedirectResponse
     {
         $chirp->delete();
-        return to_route('chirp.index')->with('status', 'chirp eliminado');
+        return back()->with('status', 'chirp eliminado');
     }
+
+    /**
+     * Restore the specified resource from storage.
+     * ! no disponible
+     */
+    // public function restore(Chirp $chirp): RedirectResponse
+    // {
+    //     $chirp->restore();
+    //     return back()->with('status', 'chirp restaurado');
+    // }
 }

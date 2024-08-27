@@ -41,7 +41,7 @@
 
                 <li class="inline-flex items-center">
                     <p class="px-2 text-sm font-medium text-gray-500 dark:text-gray-400 first-letter:uppercase">
-                        mostrar {{ $chirp->slug }}</p>
+                        mostrar</p>
                 </li>
             </ul>
         </nav>

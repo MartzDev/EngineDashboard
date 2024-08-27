@@ -60,6 +60,10 @@
                     <th scope="col" class="px-6 py-3 text-center uppercase">
                         updated_at
                     </th>
+                    {{-- ! no disponible --}}
+                    {{-- <th scope="col" class="px-6 py-3 text-center uppercase">
+                        deleted_at
+                    </th> --}}
                     <th scope="col" class="px-6 py-3 text-center uppercase">
                         opciones
                     </th>
@@ -73,65 +77,78 @@
                         <td class="px-6 py-4" scope="row">
                             {{ $chirp->id }}
                         </td>
-
                         <td class="px-6 py-4" scope="row">
                             {{ $chirp->slug }}
                         </td>
-
                         <td class="px-6 py-4" scope="row">
                             {{ $chirp->message }}
                         </td>
-
                         <td class="px-6 py-4" scope="row">
                             {{ $chirp->created_at }}
                         </td>
-
                         <td class="px-6 py-4" scope="row">
                             {{ $chirp->updated_at }}
                         </td>
-
+                        {{-- ! no disponible --}}
+                        {{-- <td class="px-6 py-4" scope="row">
+                            {{ $chirp->deleted_at }}
+                        </td> --}}
                         <td class="px-6 py-4" scope="row">
-                            <div class="flex items-center justify-center">
-                                <a href="{{ route('chirp.edit', $chirp) }}"
-                                    class="pr-2 font-bold text-blue-600 dark:text-blue-500 hover:underline">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil">
-                                        <path
-                                            d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
-                                        <path d="m15 5 4 4" />
-                                    </svg>
-                                </a>
-
-                                <a href="{{ route('chirp.show', $chirp) }}"
-                                    class="pr-2 font-bold text-yellow-300 dark:text-yellow-300 hover:underline">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye">
-                                        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
-                                        <circle cx="12" cy="12" r="3" />
-                                    </svg>
-                                </a>
-
-                                <form action="{{ route('chirp.destroy', $chirp) }}" method="post">
+                            @if ($chirp->deleted_at)
+                                {{-- ! no disponible --}}
+                                {{-- <form action="{{ route('chirp.restore', $chirp) }}" method="POST">
                                     @csrf
-                                    @method('delete')
-
-                                    <button onclick="event.preventDefault(); this.closest('form').submit();"
-                                        class="pr-2 font-bold text-red-600 dark:text-red-500 hover:underline">
+                                    @method('PATCH')
+                                    <button type="submit" title="restaurar">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round"
-                                            class="lucide lucide-trash-2">
-                                            <path d="M3 6h18" />
-                                            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-                                            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-                                            <line x1="10" x2="10" y1="11" y2="17" />
-                                            <line x1="14" x2="14" y1="11" y2="17" />
+                                            viewBox="0 0 24 24">
+                                            <path fill="currentColor"
+                                                d="M13 3a9 9 0 0 0-9 9H1l3.89 3.89l.07.14L9 12H6a7 7 0 0 1 7-7a7 7 0 0 1 7 7a7 7 0 0 1-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42A8.9 8.9 0 0 0 13 21a9 9 0 0 0 9-9a9 9 0 0 0-9-9" />
                                         </svg>
                                     </button>
-                                </form>
-                            </div>
+                                </form> --}}
+                            @else
+                                <div class="flex items-center justify-center">
+                                    <a href="{{ route('chirp.edit', $chirp) }}" title="editar"
+                                        class="pr-2 font-bold text-blue-600 dark:text-blue-500 hover:underline">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil">
+                                            <path
+                                                d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+                                            <path d="m15 5 4 4" />
+                                        </svg>
+                                    </a>
+
+                                    <a href="{{ route('chirp.show', $chirp) }}" title="mostrar"
+                                        class="pr-2 font-bold text-yellow-300 dark:text-yellow-300 hover:underline">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye">
+                                            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                                            <circle cx="12" cy="12" r="3" />
+                                        </svg>
+                                    </a>
+
+                                    <form action="{{ route('chirp.destroy', $chirp) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" title="eliminar"
+                                            class="pr-2 font-bold text-red-600 dark:text-red-500 hover:underline">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                class="lucide lucide-trash-2">
+                                                <path d="M3 6h18" />
+                                                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                                                <line x1="10" x2="10" y1="11" y2="17" />
+                                                <line x1="14" x2="14" y1="11" y2="17" />
+                                            </svg>
+                                        </button>
+                                    </form>
+                                </div>
+                            @endif
                         </td>
                     </tr>
                 @empty

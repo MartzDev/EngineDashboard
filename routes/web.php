@@ -18,5 +18,10 @@ Route::middleware([
         return view('dashboard', compact('users'));
     })->name('dashboard');
 
-    Route::resource('chirp', ChirpController::class);
+    Route::resource('chirp', ChirpController::class)->except(['restore']);
+
+    /**
+     * ! NO DISPONIBLE
+     */
+    // Route::patch('chirp/{chirp}/restore', [ChirpController::class, 'restore'])->name('chirp.restore');
 });

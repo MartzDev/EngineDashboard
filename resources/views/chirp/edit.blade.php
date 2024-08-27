@@ -48,9 +48,9 @@
     </x-slot>
 
     <div class="max-w-2xl p-4 mx-auto sm:p-6 lg:p-8">
-        <form method="post" action="{{ route('chirp.update', $chirp) }}">
+        <form method="POST" action="{{ route('chirp.update', $chirp) }}">
             @csrf
-            @method('put')
+            @method('PUT')
 
             <x-label for="slug" value="slug" class="mb-2" />
             <x-input id="slug" name="slug" type="text" class="w-full mb-2" required :value="old('slug', $chirp)" />
